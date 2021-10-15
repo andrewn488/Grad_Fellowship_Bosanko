@@ -1,0 +1,157 @@
+---
+output: html_document
+---
+
+#### **To: Quian and General Mills Management**  
+  
+#### **From: Andrew Nalundasan and Jordan Gropper**  
+  
+#### **Date: July 29, 2021**   
+  
+#### **RE: Findings and actions for advertisement campaign and promotion strategies**  
+
+***
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE, warning = FALSE)
+```
+
+```{r}
+# Course: OMSBA 5210, Seattle University
+# Purpose: Midterm Project Memo
+# Date: July 29, 2021
+# Authors: Andrew Nalundasan and Jordan Gropper
+
+```
+
+```{r message = FALSE, echo = FALSE}
+# Load librarys
+library(tidyverse)
+library(data.table)
+library(kableExtra)
+library(agricolae)
+```
+
+```{r message=FALSE, include=FALSE}
+# read data into environment and assign to variable
+cereal_product <- read_csv("../02_raw_data/mtp_product_data.csv")
+cereal_sales <- read_csv("../02_raw_data/mtp_sales_data.csv")
+
+# create new column for 'company' for each cereal company
+cereal_product <- cereal_product %>% 
+  mutate(company = case_when(
+    str_starts(brand, 'GENERAL') ~ 'General Mills', 
+    str_starts(brand, 'KELLOGGS') ~ 'Kelloggs', 
+    str_starts(brand, 'POST') ~ 'Post'))
+
+# remove cereal company name from 'brand' column
+cereal_product <- cereal_product %>% 
+  mutate(brand = str_replace_all(brand, "GENERAL MILLS", "")) %>% 
+  mutate(brand = str_replace_all(brand, "KELLOGGS", "")) %>% 
+  mutate(brand = str_replace_all(brand, "POST", "")) %>% 
+  mutate(flavor = stringr::str_to_title(flavor)) %>% 
+  mutate(brand = str_to_title(brand)) %>% 
+  mutate(brand = str_replace_all(brand, "Cinnamon Tst Cr", "Cinnamon Toast Crunch"))
+
+# update UPC formatting  
+cereal_product <- cereal_product %>%
+  mutate(UPC = str_sub(UPC, 4, -1))
+
+# update UPC formatting
+cereal_product <- cereal_product %>% 
+  mutate(UPC = str_replace_all(UPC, "-", "."))
+
+# join cereal_product and cereal_sales together
+cereal_ps <- left_join(cereal_product, cereal_sales, by = "UPC")
+
+# number of sales between ad campaigns
+# ad A
+gm_ad_a <- cereal_ps %>% 
+  group_by(ad, company) %>% 
+  summarise(count_n = n()) %>% 
+  filter(ad == "A") %>% 
+  filter(company == "General Mills") %>% 
+  pull(count_n)
+
+# ad B
+gm_ad_b <- cereal_ps %>% 
+  group_by(ad, company) %>% 
+  summarise(count_n = n()) %>% 
+  filter(ad == "B") %>% 
+  filter(company == "General Mills") %>% 
+  pull(count_n)
+
+# difference
+gm_diff <- gm_ad_a - gm_ad_b
+
+# median promo numbers
+promo0_med <- Median.test(cereal_ps$units, as.factor(cereal_ps$promo), alpha = 0.05) 
+
+# promo 0
+promo0_med_units <- promo0_med$medians[1, 1]
+
+# promo 1
+promo1_med_units <- promo0_med$medians[2, 1]
+
+# median units for ad A
+ada_med <- Median.test(cereal_ps$units, as.factor(cereal_ps$ad), alpha = 0.05)
+ada_med_units <- ada_med$medians[1, 1]
+
+
+# median units for ad B  
+adb_med_units <- ada_med$medians[2, 1]
+
+gm_med_units <- cereal_ps %>% 
+  filter(company == 'General Mills') %>% 
+  filter(promo == '1') %>% 
+  group_by(iri_key, brand) %>% 
+  summarise(med_units = median(units)) %>%
+  ungroup() %>% 
+  arrange(-med_units) %>%
+  slice(1:5)
+
+gm_med_units <- gm_med_units$med_units[1]
+```
+ 
+We have completed an analysis on the effectiveness of in-store promotions and advertisement campaigns for General Mills (GM). This memo includes details about our findings and recommendations from our study. The provided dataset had 21,850 observations of weekly sales information for GM and our two closest competitors, Kellogg's and Post. The dataset was used to better understand the relationship between prices, units sold, brands, flavors, packaging, promotions, and advertisement campaigns. In this study, we identify the top performing stores and determine which brands of cereal are the top sellers, and compare performance between small and medium sized advertisement campaigns. To conclude this memo, we suggest recommendations of actions that GM could take regarding in-store promotion and advertisement strategies to enhance its competition within the cereal market.  
+
+It was found that Kellogg's is the only company from our dataset with a positive sales trend for the year. We first analyzed in-store promotions to identify ways to help boost GM's annual sales performance.
+
+<br>
+![](company_sales_scatter.png){width=800px}
+
+In-store promotions were found to sometimes discount cereal up to 25% of their actual value. In these drastically discounted scenarios, it would be necessary to sell up to four units for GM to break even. To optimize GM's in-store promotion strategy, we identified the top five performing stores that experienced increased sales during promotions and determined the best selling brands at those stores. As you can see in the table below, the labeled stores outsold the others when it came to selling promoted items. 
+
+```{r}
+top_stores <- cereal_ps %>% 
+  filter(company == 'General Mills') %>% 
+  filter(promo == '1') %>% 
+  group_by(iri_key, brand) %>% 
+  summarise(med_units = median(units)) %>%
+  ungroup() %>% 
+  arrange(-med_units) %>% 
+  slice(1:5)%>% 
+  kable(align = 'l', 
+        caption = "Top 5 performing stores with top GM branded cereal during in-store promotion",
+        col.names = c("Store Number", "Best Brand", "Median Units Sold")) %>% 
+  kable_styling(full_width = FALSE,
+                bootstrap_options = "striped")
+
+top_stores
+```
+
+
+A revamping of in-store promotion strategy would enable GM to compete better in this market. It was found that each store above sold `r gm_med_units` median units of the top brands: Lucky Charms, Cinnamon Toast Crunch, and Cocoa Puffs. We encourage GM to apply similar in-store promotion strategies effective at the stores highlighted above to all stores that sell GM products. To compare GM to the market as a whole, the cereal market experienced much lower sales depending on in-store promotions. When there were no in-store promotions in effect, a median of `r promo0_med_units` units were sold while a median of `r promo1_med_units` units were sold during promotions. Implementing in-store promotion strategies similar to what the top five stores have in effect would help GM to boost sales.  
+
+In addition to promotions, optimizing GM's advertisement campaigns is very important, as we are in direct competition with Kellogg's. Maximizing our investments in campaigns that have practical effect on sales will enable us to sell more cereal at a lower advertisement cost, allowing us to grow our annual sales. As the graph above depicts, currently our sales decline over the year, where as Kelloggs’ increases. To further assist in the increase of GM's sales, our second recommendation was developed by analyzing the performance of GM's two different advertisement campaigns: small and medium. Going into this analysis, we assume that medium sized campaigns cost more to launch and maintain compared to a small sized campaign.
+
+<br>
+![](weekly_ad_sales_smooth.png){width=800px}
+
+Comparing the two campaign’s abilities to sell units, we found that the small sized campaigns outperformed medium campaigns by yielding `r gm_ad_a` overall sales and `r ada_med_units` median units sold while the medium campaign yielded `r gm_ad_b` overall sales and `r adb_med_units` median units sold. A difference of `r gm_diff` overall units sold over time would certainly help boost GM's sales numbers. The behavior of small campaigns out performing medium campaigns was found to be consistent behavior given the dataset provided. By focusing efforts on small advertisement campaigns, GM could compound sales in the long-term, helping to drive sales into a positive trend for the year. Additionally, GM would save on the costs of managing medium sized campaigns by focusing only on small campaigns, making an impact on the bottom line and compounding the effect of increased sales. Additionally, we noticed that ads and revenue dropped towards the end of the year. Having a strong ad campaign with optimized promotions at the end of the year would certainly increase revenue.
+
+In conclusion, we were able to identify and recommend two distinct ways of guiding GM to decrease advertisement costs and increase our potential to sell more cereal. Focusing on small campaigns and optimizing our in-store promotion strategies by modeling our top five performing stores will help us to compete in this market. The first step is to implement these recommendations to influence sales trends. A future study should be performed to validate these recommendations to ensure that sales begin increasing. When sales begin increasing, additional future studies could be done to optimize profits. If you have any questions about the research done, please feel free to reach out to our team. Our Technical Appendix with our complete analysis has been included with this submission.
+
+Best,
+  
+Jordan Gropper and Andrew Nalundasan
