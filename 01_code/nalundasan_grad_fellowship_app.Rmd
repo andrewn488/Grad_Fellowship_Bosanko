@@ -48,6 +48,8 @@ Responsibilities to manage this event entailed:
 + Health and Safety point of contact for the event
 + Simultaneously maintain project progress and manage client expectations
 
+The week of collaboration resulted in an enforced bond among the employees. It became easier and more natural to work as virtual teams after the face to face interactions. The product launches for the remainder of the year were successful, enabling our client to submit necessary reports prior to the mandated deadlines. The firm remains a trusted advisor to the client to this day. 
+
 I completed the MSBA `r data_viz` class in Data Visualization over the Summer 2021 quarter. In this class, I learned the principles of the Exploratory Data Analysis (EDA) process, how to construct effective visuals, and the art of telling stories with data. The example R code provided with this application was my midterm submission for the class, which walks through a full EDA of the sales trends of cereal companies and provides findings and actions formatted as a memo. Both documents were prepared in R Markdown and managed via GitHub in collaboration with my research partner.
 
 ## Conclusion
