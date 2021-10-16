@@ -1,5 +1,5 @@
 ---
-title: "Motivation to enhance analyst skills prior to entering the job market"
+title: "Desire to enhance analyst skillset prior to entering the job market"
 author: "Andrew Nalundasan"
 date: "October 15, 2021"
 output: pdf_document
@@ -17,27 +17,29 @@ weekly_hours <- 20
 ```
 
 ## Statement of interest 
-As I progress through the MS in Business Analytics (MSBA) program, I find myself craving real-world experience within the data science industry. Being midway through the MSBA program, I have begun my due diligence of putting out feelers for work once I complete the program in August 2022. In order to enhance my competitiveness in the job market, I am striving to gain relevant experience as an analyst. I would then apply the experiences from the fellowship to my job search and have concrete examples to reference during job interviews. I am eager to explore the different avenues that the data science industry has to offer. Through my experience as a management consultant, I have come to know corporate America very well, which leaves me curious to learn more about the world of research and the private sector. 
 
-I am motivated to do what it takes to continue my personal growth as a student and as a professional. This fellowship is the perfect opportunity for me to pursue since I have recently decided to leave my full-time consulting job to center my focus solely on completing the MSBA program. This positions me to commit to the `r weekly_hours` hours per week as described in the posting. 
+As I progress through the MS in Business Analytics (MSBA) program, I find myself craving real-world experience within the data science industry. Being midway through the MSBA program, I have begun my due diligence of putting out feelers for work once I complete the program in August 2022. In order to enhance my competitiveness in the job market, I am striving to gain relevant experience as an analyst. I would apply the experiences from this fellowship to my job search and have concrete insights to reference during job interviews. I am eager to explore the different avenues that the data science industry has to offer. Through my professional experience as a management consultant, I have come to know corporate America very well, which leaves me curious to learn more about the world of research and the private sector. 
+
+I am motivated to do what it takes to continue my personal growth as a student and as a professional. This fellowship is the perfect opportunity for me to pursue as I have recently decided to leave my full-time consulting job to center my focus solely on completing the MSBA program. This positions me to commit to the `r weekly_hours` hours per week as described in the posting, and allows me to put into practice the concepts that I have been learning through this program.
 
 My goals and objectives through this fellowship would be to: 
 
 1. Gain an immersive technical experience of working with data, R, and GitHub
 2. Sharpen my statistical exploration and statistical interpretation acumen
-3. Hone my organization and communication skills
-4. Grow my professional network 
-5. Merge my management consultant background experience with my skills as an analyst
+3. Merge my management consultant background with my skills as an analyst
+4. Hone my organization and communication skills
+5. Grow my professional network
 
 ## Event management and research assistance experience
-As a team lead at my previous employer, I helped coordinate an "all hands" meeting for all employees staffed to the firm's largest program. The event brought together `r n_employees` employees from across the country for face to face collaboration for `r n_days` days in Seattle. 
+
+As a team lead at my previous employer, I helped coordinate an "all hands" meeting for all employees staffed to the firm's largest program. The event brought together `r n_employees` employees from across the country for face to face collaboration over `r n_days` days in Seattle. 
 
 Responsibilities to manage this event entailed: 
 
 + Organization of travel logistics for traveling employees 
-+ Communication with all employees regarding schedule and expectations
++ Communication with employees regarding schedule and expectations
 + Coordination with meeting venue 
-    + Request bids from several hotels and event spaces
+    + Request bids from various hotels and event spaces
     + Room booking arrangements
     + Coffee, breakfast, lunch, dinner arrangements
     + A/V equipment, name tags, writing supplements
@@ -46,9 +48,10 @@ Responsibilities to manage this event entailed:
 + Health and Safety point of contact for the event
 + Simultaneously maintain project progress and manage client expectations
 
-During the Summer 2021 quarter, I took the MSBA `r data_viz` class in Data Visualization. In this class, I learned the principles of the Exploratory Data Analysis (EDA) process, how to construct effective visuals, and the art of telling stories with data. The example R code provided with this application was my midterm submission for the class, which walks through a full EDA of the sales trends of cereal companies and provides findings and actions formatted as a memo. Both documents were prepared in R Markdown and managed via GitHub in collaboration with my research partner.
+I completed the MSBA `r data_viz` class in Data Visualization over the Summer 2021 quarter. In this class, I learned the principles of the Exploratory Data Analysis (EDA) process, how to construct effective visuals, and the art of telling stories with data. The example R code provided with this application was my midterm submission for the class, which walks through a full EDA of the sales trends of cereal companies and provides findings and actions formatted as a memo. Both documents were prepared in R Markdown and managed via GitHub in collaboration with my research partner.
 
 ## Conclusion
+
 I appreciate your consideration for the Howard J. Bosanko Graduate Fellowship. If there are further questions regarding my qualifications, background, or motivation, I can be reached at analundasan@seattleu.edu. The link for the GitHub repository that was used to prepare this application is provided below. Thank you very much. 
 
 Sincerely, 
