@@ -1,0 +1,38 @@
+---
+title: "Recommendation Letter for Jack Williams"
+author: "Andrew Nalundasan"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+To Whom it May Concern,
+
+I highly recommend Jack Williams as a candidate to your graduate program. I had the pleasure of working with Jack for two years while employed at Arcadis, a global consultancy, where we partnered with clients to implement software systems to track their environmental, health, and safety (EHS) data. Our clients would then leverage these systems to submit state and federal regulatory reports to the EPA, OSHA, and other regulators. 
+
+As a product manager, Jack reported directly to me as the primary technical analyst for the implementation of the system configured to manage our client's toxicology data. Internally, Jack collaborated with our systems architect and other technical analysts to develop robust solutions for our client. Externally, Jack interfaced with our client's main stakeholders ranging from the product owner, program manager, business stakeholders, and various IT resources. This implementation took place mid-2020. With the stress of furloughs, personal health, and unforgiving deadlines, Jack maintained his composure to ensure a successful project delivery. Jack was involved in the entire software development life cycle, including: 
+
++ Business Understanding
++ Data Understanding
++ Data Preparation
++ Modeling
++ Evaluation
++ Deployment and Training
+
+Jack distinguished himself by successfully deploying an exceptionally complicated process for our firm's largest client. I would rank him in the top 2% of consultants that I have worked with in the past five years in respect to his problem solving ability and communication skills.
+
+Overall, Jack is highly intelligent and is a strong communicator. He provided training to our client in the form of oral presentations and written documentation to assist our client with system adoption. He was able to anticipate road blocks by thinking through the logic of our system's functionality and how it interacted with the overall architecture. Internally, Jack was highly proficient in communicating inefficiencies. He learned to raise risks early and often to prevent bugs from compounding on themselves, which was a learned skill after being provided the constructive feedback to not be afraid to bring bad news to the table. Once this lesson was learned, Jack was heavily relied on to get a true sense of the pulse of our project.
+
+On a personal level, Jack is a well disciplined individual with a pleasant personality. He has run multiple full marathons and cares deeply for the environment. I was inspired by him when he told me that he volunteered his time during the 2020 presidential campaign to be a pollster in his hometown. 
+
+Jack’s work at Arcadis suggests that he would greatly benefit from the opportunities that your program offers. He has proven himself to have the perseverance, initiative, and intellectual creativity necessary to complete an advanced graduate degree. I strongly believe that Jack would be a positive asset to your program. Please contact me if I can be of any further assistance on understanding Jack's abilities. 
+
+Sincerely,
+
+Andrew Nalundasan
+
+
